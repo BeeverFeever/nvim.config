@@ -1,5 +1,22 @@
 utils = {}
-settings = {}
+globals = {}
+local M = {}
+
+M.lazyload = function(lazypath)
+    if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({
+            "git",
+            "clone",
+            "--filter=blob:none",
+            "--single-branch",
+            "https://github.com/folke/lazy.nvim.git",
+            lazypath,
+        })
+        print("You probably most likely need to restart nvim now")
+        return true
+    end
+    vim.opt.runtimepath:prepend(lazypath)
+end
 
 utils.get_package = function(pkg_name)
     local ok, package = pcall(require, pkg_name)
@@ -10,39 +27,37 @@ utils.get_package = function(pkg_name)
     end
 end
 
-settings = {
-    winblend = 0,
+globals = {
     border_style = "single",
-    -- border_chars = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-    border_chars = { "+", "-", "+", "|", "+", "-", "+", "|" },
+    border_chars = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
 
     icons = {
-        lsp = {
-            ["Class"] = "",
-            ["Color"] = "󰏘",
-            ["Constant"] = "󰏿",
-            ["Constructor"] = "",
-            ["Enum"] = "",
-            ["EnumMember"] = "",
-            ["Event"] = "",
-            ["Field"] = "󰜢",
-            ["File"] = "",
-            ["Folder"] = "",
-            ["Function"] = "󰊕",
-            ["Interface"] = "",
-            ["Keyword"] = "󰌋",
-            ["Method"] = "󰆧",
-            ["Module"] = "",
-            ["Operator"] = "󰆕",
-            ["Property"] = "",
-            ["Reference"] = "",
-            ["Snippet"] = "",
-            ["Struct"] = "󰙅",
-            ["Text"] = "󰉿",
-            ["TypeParameter"] = "",
-            ["Unit"] = "",
-            ["Value"] = "󰎠",
-            ["Variable"] = "󰀫",
+        kind = {
+            Class = "",
+            Color = "󰏘",
+            Constant = "󰏿",
+            Constructor = "",
+            Enum = "",
+            EnumMember = "",
+            Event = "",
+            Field = "󰜢",
+            File = "",
+            Folder = "",
+            Function = "󰊕",
+            Interface = "",
+            Keyword = "󰌋",
+            Method = "󰆧",
+            Module = "",
+            Operator = "󰆕",
+            Property = "",
+            Reference = "",
+            Snippet = "",
+            Struct = "󰙅",
+            Text = "󰉿",
+            TypeParameter = "",
+            Unit = "",
+            Value = "󰎠",
+            Variable = "󰀫",
         },
 
         diagnostics = {
@@ -51,27 +66,7 @@ settings = {
             hint = "H",
             info = "I",
         },
-
-        git = {
-            added = "",
-            conflict = "",
-            deleted = "",
-            ignored = "◌",
-            modified = "",
-            removed = "",
-            renamed = "➜",
-            staged = "",
-            unstaged = "✗",
-            untracked = "★",
-        },
-
-        git_signs = {
-            add = '│',
-            change = '│',
-            delete = '_',
-            topdelete = '‾',
-            changedelete = '~',
-            untracked = '┆',
-        },
     },
 }
+
+return M
