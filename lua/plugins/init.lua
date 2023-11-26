@@ -6,7 +6,7 @@ local plugins = {
         lazy = false,
         priority = 1000,
         config = function ()
-            require("nord").setup({})
+            require("plugins.configs.colourscheme").nord()
             vim.cmd.colorscheme("nord")
         end,
     },
@@ -27,7 +27,6 @@ local plugins = {
         end,
     },
 
-    -- { "kyazdani42/nvim-web-devicons", },
     {
         "williamboman/mason.nvim",
         cmd = { "Mason", "MasonInstall", "MasonUpdate" },
@@ -55,7 +54,7 @@ local plugins = {
             "williamboman/mason-lspconfig.nvim",
         },
         cmd = { "LspInfo", "LspInstall" },
-        event = { "LspAttach", "BufRead", "BufWinEnter", "BufNewFile" },
+        event = { "BufRead", "BufWinEnter", "BufNewFile" },
         config = function()
             require("plugins.configs.lsp")
         end,
@@ -89,23 +88,15 @@ local plugins = {
         name = "mini",
         version = false,
         event = { "InsertEnter" },
-        -- keys = { "<leader>e", "<leader>ff", "<leader>b", "<leader>fr", "<leader>fw", "<leader>q", "<leader>ti", "<C-q>" },
+        keys = { "gc", "ggc", "<leader>o" },
         config = function()
             local mini_config = require("plugins.configs.mini")
             local mini_modules = {
-                "pairs",
-                "ai",
-                "surround",
                 "comment",
                 "files",
-                "hipatterns",
-                "bufremove",
-                "pick",
-                "move",
-                "indentscope",
-                "extra",
+                "pairs",
             }
-            -- require("core.mappings").mini()
+            require("keymaps").mini()
             for _, module in ipairs(mini_modules) do
                 require("mini." .. module).setup(mini_config[module])
             end
@@ -113,12 +104,15 @@ local plugins = {
     },
 
     {
-        name = "options",
-        event = "VeryLazy",
-        dir = vim.fn.stdpath("config"),
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        lazy = false,
+        keys = {},
         config = function ()
-        end,
+            require("keymaps").fzf()
+            require("plugins.configs.fzf")
+        end
     },
 }
 
-lazy.setup(plugins, require("plugins.configs.lazy_nvim"))
+lazy.setup(plugins, require("plugins.configs.lazy"))

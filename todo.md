@@ -2,6 +2,3 @@
 
 - configure mini
 - go through keymaps
-- highlight groups
-    - NonText
-    - winbar

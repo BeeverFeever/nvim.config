@@ -6,10 +6,6 @@ local M = {}
 M.opts = function()
     g.mapleader = ' '
 
-    g.netrw_banner = 0    -- gets rid of the annoying banner for netrw
-    g.netrw_altv = 1      -- change from left splitting to right splitting
-    g.netrw_liststyle = 3 -- tree style view in netrw
-
     opt.ruler = false
     opt.confirm = true
     opt.guicursor = ""
@@ -22,6 +18,7 @@ M.opts = function()
     opt.shiftwidth = 4
     opt.expandtab = true
     opt.smartindent = true
+    opt.autoindent = true
     opt.pumheight = 20
     opt.ignorecase = true
     opt.smartcase = true
@@ -30,7 +27,7 @@ M.opts = function()
     opt.relativenumber = true
     opt.fillchars:append { eob = " " }
     opt.shortmess:append "aIF"
-    opt.numberwidth = 2
+    opt.numberwidth = 3
     opt.splitbelow = true
     opt.splitright = true
     opt.termguicolors = true
@@ -40,9 +37,10 @@ M.opts = function()
     opt.textwidth = 80
     opt.scrolloff = 8
     opt.timeoutlen = 300
-    opt.laststatus = 0
-    opt.winbar = "%F %m"
     opt.wildmenu = true
+    opt.laststatus = 3
+    opt.winbar = "%F %m"
+    opt.statusline = "%#Normal#%="
 
     opt.smoothscroll = true
 end
