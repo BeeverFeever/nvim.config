@@ -60,17 +60,17 @@ end
 M.lsp = function(bufnr)
     local lsp_opts = { silent = true, noremap = true, buffer = bufnr }
     local lsp_mappings = {
-        { "n",          "<leader>ih", function() vim.lsp.inlay_hint(bufnr, nil) end, lsp_opts },
-        { "n",          "<leader>lD", vim.lsp.buf.declaration,                       lsp_opts },
-        { "n",          "<leader>ld", vim.lsp.buf.definition,                        lsp_opts },
-        { "n",          "<leader>lt", vim.lsp.buf.type_definition,                   lsp_opts },
-        { "n",          "<leader>li", vim.lsp.buf.implementation,                    lsp_opts },
-        { "n",          "<leader>lk", vim.lsp.buf.hover,                             lsp_opts },
-        { "n",          "<leader>lK", vim.lsp.buf.signature_help,                    lsp_opts },
-        { "n",          "<leader>ln", vim.lsp.buf.rename,                            lsp_opts },
-        { "n",          "<leader>la", vim.lsp.buf.code_action,                       lsp_opts },
-        { "n",          "<leader>lr", vim.lsp.buf.references,                        lsp_opts },
-        { { "i", "n" }, "<C-h>",      vim.lsp.buf.signature_help,                    lsp_opts }, -- this does override the original binding for <C-h> but i never use it(mainly because i didnt know it existed before now).
+        { "n",          "<leader>ih", function() vim.lsp.inlay_hint.enable(nil, false) end, lsp_opts },
+        { "n",          "<leader>lD", vim.lsp.buf.declaration,                              lsp_opts },
+        { "n",          "<leader>ld", vim.lsp.buf.definition,                               lsp_opts },
+        { "n",          "<leader>lt", vim.lsp.buf.type_definition,                          lsp_opts },
+        { "n",          "<leader>li", vim.lsp.buf.implementation,                           lsp_opts },
+        { "n",          "<leader>lk", vim.lsp.buf.hover,                                    lsp_opts },
+        { "n",          "<leader>lK", vim.lsp.buf.signature_help,                           lsp_opts },
+        { "n",          "<leader>ln", vim.lsp.buf.rename,                                   lsp_opts },
+        { "n",          "<leader>la", vim.lsp.buf.code_action,                              lsp_opts },
+        { "n",          "<leader>lr", vim.lsp.buf.references,                               lsp_opts },
+        { { "i", "n" }, "<C-h>",      vim.lsp.buf.signature_help,                           lsp_opts }, -- this does override the original binding for <C-h> but i never use it(mainly because i didnt know it existed before now).
         {
             "n",
             "<leader>f",
@@ -100,7 +100,7 @@ end
 M.fzf = function()
     local fzf_opts = default_opts
     local fzf_mappings = {
-        { "n", "<leader>ff", "<cmd>FzfLua files<CR>", fzf_opts },
+        { "n", "<leader>ff", "<cmd>FzfLua files<CR>",        fzf_opts },
         { "n", "<leader>fg", "<cmd>FzfLua lgrep_curbuf<CR>", fzf_opts },
     }
     set_keymaps(fzf_mappings)

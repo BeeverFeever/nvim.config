@@ -20,7 +20,7 @@ vim.diagnostic.config(diagnostic_config)
 utils.get_package("keymaps").diagnostics()
 
 local lsp_capabilities =  nvim_lsp.default_capabilities()
-local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
+local inlay_hint = vim.lsp.inlay_hint.enable
 
 local lsp_attach = function(client, bufnr)
     utils.get_package("keymaps").lsp(bufnr)

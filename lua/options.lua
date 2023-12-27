@@ -42,7 +42,7 @@ M.opts = function()
     opt.winbar = "%F %m"
     opt.statusline = "%#Normal#%="
 
-    opt.smoothscroll = true
+    -- opt.smoothscroll = true
 end
 
 return M
