@@ -1,4 +1,4 @@
-local fzf = utils.get_package("fzf-lua")
+local fzf = require("fzf-lua")
 
 fzf.setup({
     winopts = {

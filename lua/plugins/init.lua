@@ -1,6 +1,15 @@
-local lazy = utils.get_package("lazy")
+require("plugins.lazy")
+require("plugins.colourscheme").nord()
+require("plugins.lsp")
 
-local plugins = {
-}
 
-lazy.setup(plugins, require("plugins.configs.lazy"))
+
+------------------------------
+------seperate plugins--------
+------------------------------
+
+require("plugins.fzf")
+require("plugins.mini")
+require("plugins.drop")
+require("plugins.telekasten")
+require("plugins.gitsigns")

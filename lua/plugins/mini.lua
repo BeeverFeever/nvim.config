@@ -1,8 +1,6 @@
-local M = {}
-
-M.comment = {}
-
-M.files = {
+require("mini.trailspace").setup()
+require("mini.comment").setup()
+require("mini.files").setup({
     mappings = {
         go_in = "",
         go_in_plus = "l",
@@ -14,8 +12,6 @@ M.files = {
         border = globals.border_style
     },
     use_as_default_explorer = true,
-}
+})
 
-M.pairs = {}
-
-return M
+require("mini.pairs").setup()
