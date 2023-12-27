@@ -39,13 +39,19 @@ require("lazy").setup({
         },
 
         {
+            "ibhagwan/fzf-lua",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            config = function()
+                require("options.keymaps").fzf()
+            end
+        },
+
+        {
             "NeogitOrg/neogit",
             dependencies = {
                 "nvim-lua/plenary.nvim",
-                "sindrets/diffview.nvim",
                 "ibhagwan/fzf-lua",
             },
-            config = true
         },
 
         "lewis6991/gitsigns.nvim",
@@ -73,17 +79,15 @@ require("lazy").setup({
 
         {
             "folke/drop.nvim",
+            lazy = true,
             event = "VimEnter",
         },
 
         {
-            "NvChad/nvim-colorizer.lua",
-            config = function()
-                require("colorizer").setup()
-            end
+            "folke/zen-mode.nvim",
+            lazy = true,
+            keymaps = { "<leader>zz" }
         },
-
-        "folke/zen-mode.nvim",
 
         {
             "echasnovski/mini.nvim",
@@ -95,14 +99,6 @@ require("lazy").setup({
         },
 
         {
-            "ibhagwan/fzf-lua",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-            config = function()
-                require("options.keymaps").fzf()
-            end
-        },
-
-        {
             "renerocksai/telekasten.nvim",
             lazy = true,
             ft = "markdown",
@@ -110,13 +106,7 @@ require("lazy").setup({
                 "nvim-telescope/telescope.nvim",
                 "renerocksai/calendar-vim"
             },
-            config = function()
-                require("telekasten").setup({
-                    home = vim.fn.expand("~/notes"),
-                })
-            end
         },
-
     },
 
 
