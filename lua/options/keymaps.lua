@@ -9,22 +9,30 @@ end
 M.general = function()
     local general_mappings = {
         -- toggle numbers (with relative line numbers)
-        { "n",          "<leader>n", '<cmd>set rnu! nu!<CR>',         default_opts },
+        { "n",          "<leader>n",  '<cmd>set rnu! nu!<CR>',              default_opts },
 
         -- use j and k to move through wrapped lines
-        { "n",          "k",         'v:count ? "k" : "gk"',          { silent = true, expr = true } },
-        { "n",          "j",         'v:count ? "j" : "gj"',          { silent = true, expr = true } },
+        { "n",          "k",          'v:count ? "k" : "gk"',               { silent = true, expr = true } },
+        { "n",          "j",          'v:count ? "j" : "gj"',               { silent = true, expr = true } },
 
         -- does some pasting magic, got it from NvChad
-        { "v",          "p",         'p:let @+=@0<CR>:let @"=@0<CR>', default_opts },
+        { "v",          "p",          'p:let @+=@0<CR>:let @"=@0<CR>',      default_opts },
 
         -- move text around
-        { { "x", "v" }, "<S-j>",     ":m '>+1<CR>gv-gv",              default_opts },
-        { { "x", "v" }, "<S-k>",     ":m '<-2<CR>gv-gv",              default_opts },
+        { { "x", "v" }, "<S-j>",      ":m '>+1<CR>gv-gv",                   default_opts },
+        { { "x", "v" }, "<S-k>",      ":m '<-2<CR>gv-gv",                   default_opts },
 
         -- stay in visual mode when indenting
-        { "v",          "<",         "<gv",                           default_opts },
-        { "v",          ">",         ">gv",                           default_opts },
+        { "v",          "<",          "<gv",                                default_opts },
+        { "v",          ">",          ">gv",                                default_opts },
+
+        { "n",          "<leader>z",  "<cmd>ZenMode<CR>",                   default_opts },
+        { "n",          "<leader>o",  "<cmd>Oil<CR>",                       default_opts },
+
+        { "n",          "<leader>ff", "<cmd>FzfLua files<CR>",              default_opts },
+        { "n",          "<leader>fg", "<cmd>FzfLua grep_project<CR>",       default_opts },
+
+        { "n",          "<leader>tw", "<cmd>lua MiniTrailspace.trim()<CR>", default_opts },
     }
     set_keymaps(general_mappings)
 end
@@ -69,23 +77,6 @@ M.lsp = function(bufnr)
         },
     }
     set_keymaps(lsp_mappings)
-end
-
-M.mini = function()
-    local mini_opts = default_opts
-    local mini_mappings = {
-        { "n", "<leader>o", "<cmd>lua MiniFiles.open()<CR>", mini_opts },
-    }
-    set_keymaps(mini_mappings)
-end
-
-M.fzf = function()
-    local fzf_opts = default_opts
-    local fzf_mappings = {
-        { "n", "<leader>ff", "<cmd>FzfLua files<CR>",        fzf_opts },
-        { "n", "<leader>fg", "<cmd>FzfLua lgrep_curbuf<CR>", fzf_opts },
-    }
-    set_keymaps(fzf_mappings)
 end
 
 return M

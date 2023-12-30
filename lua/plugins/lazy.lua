@@ -25,88 +25,109 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
         {
             "gbprod/nord.nvim",
+            lazy = false,
             priority = 1000,
         },
 
-        {
-            "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
 
+
+
+
+        -------------------
+        --------LSP--------
+        -------------------
+        {
             "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "dcampos/nvim-snippy",
+            lazy = true,
+            event = "InsertEnter",
+            dependencies = {
+                "hrsh7th/cmp-nvim-lsp",
+                "dcampos/nvim-snippy",
+            },
+            config = function()
+                require("plugins.cmp")
+            end,
         },
 
+        "neovim/nvim-lspconfig",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+
+
+
+
+
+        --------------------
+        -----FUNCTIONAL-----
+        --------------------
         {
             "ibhagwan/fzf-lua",
             dependencies = { "nvim-tree/nvim-web-devicons" },
-            config = function()
-                require("options.keymaps").fzf()
-            end
         },
-
-        {
-            "NeogitOrg/neogit",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "ibhagwan/fzf-lua",
-            },
-        },
-
-        "lewis6991/gitsigns.nvim",
 
         {
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
-            config = function()
-                local treesitter = require("nvim-treesitter.configs")
-                treesitter.setup({
-                    ensure_installed = {
-                        "c",
-                        "go",
-                        "lua",
-                        "vim",
-                        "vimdoc",
-                    },
-                    auto_install = true,
-                    highlight = {
-                        enable = true,
-                    }
-                })
-            end,
         },
 
         {
-            "folke/drop.nvim",
-            lazy = true,
-            event = "VimEnter",
-        },
-
-        {
-            "folke/zen-mode.nvim",
-            lazy = true,
-            keymaps = { "<leader>zz" }
-        },
-
-        {
-            "echasnovski/mini.nvim",
-            name = "mini",
+            "echasnovski/mini.pairs",
             version = false,
-            config = function()
-                require("options.keymaps").mini()
-            end,
+        },
+
+        {
+            "echasnovski/mini.trailspace",
+            version = false,
+        },
+
+        {
+            "echasnovski/mini.comment",
+            version = false,
+        },
+
+        {
+            "stevearc/oil.nvim",
+            dependencies = "nvim-tree/nvim-web-devicons",
         },
 
         {
             "renerocksai/telekasten.nvim",
             lazy = true,
             ft = "markdown",
+            event = "BufEnter *.md",
             dependencies = {
+                "nvim-lua/plenary.nvim", -- required for telescope not telekasten
                 "nvim-telescope/telescope.nvim",
                 "renerocksai/calendar-vim"
             },
+            config = function()
+                require("plugins.telekasten")
+            end
         },
+
+
+
+
+        --------------------
+        ------COSMETIC------
+        --------------------
+
+        "lewis6991/gitsigns.nvim",
+        "folke/drop.nvim",
+
+        {
+            "folke/zen-mode.nvim",
+            opts = {
+                window = {
+                    options = {
+                        signcolumn = "no",
+                        number = false,
+                        relativenumber = false,
+                    }
+                }
+            }
+        },
+
     },
 
 

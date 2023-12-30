@@ -45,5 +45,8 @@ opt.wildmenu = true
 opt.winbar = "%#DiffAdd# %#StatusLine# %F %#DiffAdd# %#DiagnosticError# %m %#String#%(%r %h %w%) %#Normal# %= %#DiffChange# %l/%L "
 opt.wrap = false
 
+vim.api.nvim_command("filetype plugin indent on")
+vim.api.nvim_command("syntax on")
+
 -- I get the feeling im going to need this eventually
 -- g.markdown_recommend_style = 0

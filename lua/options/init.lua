@@ -21,4 +21,3 @@ require("options.globals")
 require("options.options")
 require("options.keymaps").general()
 require("options.autocmds")
-

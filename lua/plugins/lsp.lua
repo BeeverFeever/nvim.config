@@ -37,12 +37,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-local default_setup = function(server)
-    lspconfig[server].setup({
-        capabilites = lsp_capabilities,
-    })
-end
-
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
     { border = globals.border_style }
@@ -52,6 +46,12 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
     { border = globals.border_style }
 )
+
+local default_setup = function(server)
+    lspconfig[server].setup({
+        capabilites = lsp_capabilities,
+    })
+end
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -76,60 +76,4 @@ require("mason-lspconfig").setup({
             })
         end,
     }
-})
-
-
-
-
--------------------------------
----------completions-----------
--------------------------------
-
-local snippy = require("snippy")
-local cmp = require("cmp")
-
-cmp.setup({
-    sources = {
-        { name = "nvim_lsp", },
-        { name = "buffer" },
-        { name = "path" },
-    },
-
-    window = {
-        completion = {
-            border = globals.border
-        },
-        documentation = {
-            border = globals.border
-        }
-    },
-
-    mapping = {
-        ["<C-j>"]   = cmp.mapping.select_next_item(),
-        ["<C-k>"]   = cmp.mapping.select_prev_item(),
-        ["<C-e>"]   = cmp.mapping.close(),
-        ["<CR>"]    = cmp.mapping.confirm(),
-        ["<Tab>"]   = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif not snippy.can_expand_or_advance() then
-                fallback()
-            end
-            snippy.expand_or_advance()
-        end, { "i", "s", }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif not snippy.can_jump(-1) then
-                fallback()
-            end
-            snippy.previous()
-        end, { "i", "s", }),
-    },
-
-    snippet = {
-        expand = function(args)
-            snippy.expand_snippet(args.body)
-        end,
-    },
 })

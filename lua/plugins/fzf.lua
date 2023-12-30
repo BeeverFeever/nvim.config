@@ -1,6 +1,4 @@
-local fzf = require("fzf-lua")
-
-fzf.setup({
+require("fzf-lua").setup({
     winopts = {
         split = "belowright new",
         border = globals.border_style,

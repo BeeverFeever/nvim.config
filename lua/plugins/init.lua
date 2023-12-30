@@ -1,15 +1,12 @@
 require("plugins.lazy")
+require("plugins.treesitter")
 require("plugins.colourscheme").nord()
 require("plugins.lsp")
 
-
-
-------------------------------
-------seperate plugins--------
-------------------------------
-
 require("plugins.fzf")
-require("plugins.mini")
-require("plugins.drop")
-require("plugins.telekasten")
+require("mini.pairs").setup()
+require("mini.trailspace").setup()
+require("mini.comment").setup()
+require("plugins.oil")
 require("plugins.gitsigns")
+require("plugins.drop")
