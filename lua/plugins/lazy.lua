@@ -113,7 +113,6 @@ require("lazy").setup({
         --------------------
 
         "lewis6991/gitsigns.nvim",
-        "folke/drop.nvim",
 
         {
             "folke/zen-mode.nvim",

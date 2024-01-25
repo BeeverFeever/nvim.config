@@ -7,7 +7,7 @@ local set_keymaps = function(map_table)
 end
 
 M.general = function()
-    local general_mappings = {
+    set_keymaps({
         -- toggle numbers (with relative line numbers)
         { "n",          "<leader>n",  '<cmd>set rnu! nu!<CR>',              default_opts },
 
@@ -33,24 +33,22 @@ M.general = function()
         { "n",          "<leader>fg", "<cmd>FzfLua grep_project<CR>",       default_opts },
 
         { "n",          "<leader>tw", "<cmd>lua MiniTrailspace.trim()<CR>", default_opts },
-    }
-    set_keymaps(general_mappings)
+    })
 end
 
 M.diagnostics = function()
     local diagnostics_opts = { silent = true, noremap = true }
-    local diagnostics_mappings = {
+    set_keymaps({
         { "n", "<space>e", vim.diagnostic.open_float, diagnostics_opts },
         { "n", "]d",       vim.diagnostic.goto_next,  diagnostics_opts },
         { "n", "[d",       vim.diagnostic.goto_prev,  diagnostics_opts },
         { "n", "<space>q", vim.diagnostic.setloclist, diagnostics_opts },
-    }
-    set_keymaps(diagnostics_mappings)
+    })
 end
 
 M.lsp = function(bufnr)
     local lsp_opts = { silent = true, noremap = true, buffer = bufnr }
-    local lsp_mappings = {
+    set_keymaps({
         { "n", "<leader>lD", vim.lsp.buf.declaration,     lsp_opts },
         { "n", "<leader>ld", vim.lsp.buf.definition,      lsp_opts },
         { "n", "<leader>lt", vim.lsp.buf.type_definition, lsp_opts },
@@ -75,8 +73,7 @@ M.lsp = function(bufnr)
             end,
             lsp_opts,
         },
-    }
-    set_keymaps(lsp_mappings)
+    })
 end
 
 return M
