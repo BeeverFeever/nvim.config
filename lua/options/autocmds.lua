@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- wrap and check for spell in text filetypes
+-- Set some options in text and markdown files
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_spell"),
     pattern = { "gitcommit", "markdown" },

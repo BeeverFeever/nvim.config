@@ -1,6 +1,6 @@
 require("plugins.lazy")
 require("plugins.treesitter")
-require("plugins.colourscheme").nord()
+require("plugins.colourscheme").everforest()
 require("plugins.lsp")
 
 require("plugins.fzf")

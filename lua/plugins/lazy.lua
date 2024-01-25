@@ -25,7 +25,19 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
         {
             "gbprod/nord.nvim",
-            lazy = false,
+            lazy = true,
+            priority = 1000,
+        },
+
+        {
+            "Mofiqul/dracula.nvim",
+            lazy = true,
+            priority = 1000,
+        },
+
+        {
+            "neanias/everforest-nvim",
+            lazy = true,
             priority = 1000,
         },
 
@@ -42,7 +54,6 @@ require("lazy").setup({
             event = "InsertEnter",
             dependencies = {
                 "hrsh7th/cmp-nvim-lsp",
-                "dcampos/nvim-snippy",
             },
             config = function()
                 require("plugins.cmp")

@@ -42,7 +42,8 @@ opt.textwidth = 80
 opt.timeoutlen = 300
 opt.undofile = true
 opt.wildmenu = true
-opt.winbar = "%#DiffAdd# %#StatusLine# %F %#DiffAdd# %#DiagnosticError# %m %#String#%(%r %h %w%) %#Normal# %= %#DiffChange# %l/%L "
+-- I prefer to use the winbar as my statusline
+opt.winbar = "%#DiffAdd# %#StatusLine# %F %#DiffAdd# %#Red# %m %#String#%(%r %h %w%) %#Normal# %= %#DiffChange# %l/%L "
 opt.wrap = false
 
 vim.api.nvim_command("filetype plugin indent on")
