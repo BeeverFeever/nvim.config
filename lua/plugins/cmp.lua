@@ -21,14 +21,18 @@ cmp.setup({
         ["<C-k>"]   = cmp.mapping.select_prev_item(),
         ["<C-e>"]   = cmp.mapping.close(),
         ["<CR>"]    = cmp.mapping.confirm(),
-        ["<Tab>"]   = cmp.mapping(function()
+        ["<Tab>"]   = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
+            else
+                fallback()
             end
         end, { "i", "s", }),
-        ["<S-Tab>"] = cmp.mapping(function()
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
+            else
+                fallback()
             end
         end, { "i", "s", }),
     },
