@@ -39,3 +39,14 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.nu = false
     end,
 })
+
+-- Disable semantic highlighting, I don't really like this way of doing it but I
+-- don't know enough about the lsp to do it any other way. Also this is in the
+-- nvim help so yeah
+vim.api.nvim_create_autocmd("Colorscheme", {
+    callback = function()
+        for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+            vim.api.nvim_set_hl(0, group, {})
+        end
+    end
+})

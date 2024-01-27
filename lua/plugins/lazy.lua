@@ -30,12 +30,6 @@ require("lazy").setup({
         },
 
         {
-            "Mofiqul/dracula.nvim",
-            lazy = true,
-            priority = 1000,
-        },
-
-        {
             "neanias/everforest-nvim",
             lazy = true,
             priority = 1000,
@@ -54,6 +48,10 @@ require("lazy").setup({
             event = "InsertEnter",
             dependencies = {
                 "hrsh7th/cmp-nvim-lsp",
+                "hrsh7th/cmp-cmdline",
+                "hrsh7th/cmp-path",
+                "hrsh7th/cmp-buffer",
+                "dcampos/nvim-snippy",
             },
             config = function()
                 require("plugins.cmp")
