@@ -55,6 +55,7 @@ M.lsp = function(bufnr)
         { "n", "<leader>li", vim.lsp.buf.implementation,  lsp_opts },
         { "n", "<leader>lk", vim.lsp.buf.hover,           lsp_opts },
         { "n", "<leader>lK", vim.lsp.buf.signature_help,  lsp_opts },
+        { "i", "<ctrl>k",    vim.lsp.buf.signature_help,  lsp_opts },
         { "n", "<leader>lR", vim.lsp.buf.rename,          lsp_opts },
         { "n", "<leader>la", vim.lsp.buf.code_action,     lsp_opts },
         { "n", "<leader>lr", vim.lsp.buf.references,      lsp_opts },
