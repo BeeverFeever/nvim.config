@@ -17,6 +17,7 @@ opt.formatoptions = "jcroqlnt" -- "tcqj"
 opt.grepprg = "rg --vimgrep"
 opt.guicursor = ""
 opt.ignorecase = true
+opt.iskeyword:append('-')
 opt.laststatus = 1
 opt.linebreak = true
 opt.number = true
