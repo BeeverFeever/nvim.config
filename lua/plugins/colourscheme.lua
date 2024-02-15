@@ -6,7 +6,9 @@ M.nord = function()
 end
 
 M.everforest = function ()
-    require("everforest").setup()
+    require("everforest").setup({
+        background = "hard"
+    })
     vim.cmd.colorscheme("everforest")
 end
 
