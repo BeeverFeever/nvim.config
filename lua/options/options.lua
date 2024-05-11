@@ -26,18 +26,18 @@ opt.pumheight = 20
 opt.relativenumber = true
 opt.ruler = false
 opt.scrolloff = 8
-opt.shiftwidth = 4
+opt.shiftwidth = 3
 opt.shortmess:append "aIF"
 opt.showbreak = " ~> "
 opt.sidescrolloff = 8;
 opt.smartcase = true
 opt.smartindent = true
-opt.softtabstop = 4
+opt.softtabstop = 3
 opt.splitbelow = true
 opt.splitright = true
 opt.statusline = "%#Normal#%="
 opt.swapfile = false
-opt.tabstop = 4
+opt.tabstop = 3
 opt.termguicolors = true
 opt.textwidth = 80
 opt.timeoutlen = 300
