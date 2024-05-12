@@ -50,3 +50,13 @@ vim.api.nvim_create_autocmd("Colorscheme", {
       end
    end
 })
+
+-- force glsl filetype for vert and frag shader files
+-- for some reason they default to conf files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+   group = augroup("filetypedetect"),
+   pattern = { "*.vert", "*.frag" },
+   callback = function()
+      vim.cmd.setfiletype("glsl")
+   end
+})
