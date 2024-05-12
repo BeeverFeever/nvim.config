@@ -19,74 +19,74 @@ vim.api.nvim_set_hl(0, "OilTypeLink", { link = "Constant" })
 vim.api.nvim_set_hl(0, "OilTypeSocket", { link = "OilSocket" })
 
 local type_hlgroups = setmetatable({
-    ['-'] = 'OilTypeFile',
-    ['d'] = 'OilTypeDir',
-    ['p'] = 'OilTypeFifo',
-    ['l'] = 'OilTypeLink',
-    ['s'] = 'OilTypeSocket',
+   ['-'] = 'OilTypeFile',
+   ['d'] = 'OilTypeDir',
+   ['p'] = 'OilTypeFifo',
+   ['l'] = 'OilTypeLink',
+   ['s'] = 'OilTypeSocket',
 }, {
-    __index = function()
-        return 'OilTypeFile'
-    end,
+   __index = function()
+      return 'OilTypeFile'
+   end,
 })
 
 local permission_hlgroups = setmetatable({
-    ['-'] = 'OilPermissionNone',
-    ['r'] = 'OilPermissionRead',
-    ['w'] = 'OilPermissionWrite',
-    ['x'] = 'OilPermissionExecute',
+   ['-'] = 'OilPermissionNone',
+   ['r'] = 'OilPermissionRead',
+   ['w'] = 'OilPermissionWrite',
+   ['x'] = 'OilPermissionExecute',
 }, {
-    __index = function()
-        return 'OilDir'
-    end,
+   __index = function()
+      return 'OilDir'
+   end,
 })
 
 require("oil").setup({
-    columns = {
-        {
-            'type',
-            icons = {
-                directory = 'd',
-                fifo = 'p',
-                file = '-',
-                link = 'l',
-                socket = 's',
-            },
-            highlight = function(type_str)
-                return type_hlgroups[type_str]
-            end,
-        },
-        {
-            'permissions',
-            highlight = function(permission_str)
-                local hls = {}
-                for i = 1, #permission_str do
-                    local char = permission_str:sub(i, i)
-                    table.insert(hls, { permission_hlgroups[char], i - 1, i })
-                end
-                return hls
-            end,
-        },
-        { 'size',  highlight = 'Special' },
-        { 'mtime', highlight = 'Number' },
-    },
-    keymaps = {
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-s>"] = "actions.select_split",
-        ["q"] = "actions.close",
-    },
-    -- Set to false to disable all of the above keymaps
-    use_default_keymaps = true,
-    view_options = {
-        show_hidden = true,
-    },
-    float = {
-        border = globals.border_style,
-    },
-    preview = {
-        border = globals.border_style,
-    },
-    progress = {
-        border = globals.border_style,
-    },
+   columns = {
+      {
+         'type',
+         icons = {
+            directory = 'd',
+            fifo = 'p',
+            file = '-',
+            link = 'l',
+            socket = 's',
+         },
+         highlight = function(type_str)
+            return type_hlgroups[type_str]
+         end,
+      },
+      {
+         'permissions',
+         highlight = function(permission_str)
+            local hls = {}
+            for i = 1, #permission_str do
+               local char = permission_str:sub(i, i)
+               table.insert(hls, { permission_hlgroups[char], i - 1, i })
+            end
+            return hls
+         end,
+      },
+      { 'size',  highlight = 'Special' },
+      { 'mtime', highlight = 'Number' },
+   },
+   keymaps = {
+      ["<C-v>"] = "actions.select_vsplit",
+      ["<C-s>"] = "actions.select_split",
+      ["q"] = "actions.close",
+   },
+   -- Set to false to disable all of the above keymaps
+   use_default_keymaps = true,
+   view_options = {
+      show_hidden = true,
+   },
+   float = {
+      border = globals.border_style,
+   },
+   preview = {
+      border = globals.border_style,
+   },
+   progress = {
+      border = globals.border_style,
+   },
 })
