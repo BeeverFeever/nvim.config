@@ -1,54 +1,28 @@
-local opt = vim.opt
-local g = vim.g
+vim.g.mapleader = ' '
 
-g.mapleader = ' '
-
-opt.autoindent = true
-opt.breakindent = true
-opt.clipboard = "unnamedplus"
-opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3
-opt.confirm = true
-opt.cursorline = true
-opt.expandtab = true
-opt.fileencoding = "utf-8"
-opt.fillchars:append { eob = " " }
-opt.formatoptions = "jcroqlnt" -- "tcqj"
-opt.grepprg = "rg --vimgrep"
-opt.guicursor = ""
-opt.ignorecase = true
-opt.iskeyword:append('-')
-opt.laststatus = 1
-opt.linebreak = true
-opt.number = true
-opt.numberwidth = 2
-opt.pumheight = 20
-opt.relativenumber = true
-opt.ruler = false
-opt.scrolloff = 8
-opt.shiftwidth = 3
-opt.shortmess:append "aIF"
-opt.showbreak = " ~> "
-opt.sidescrolloff = 8;
-opt.smartcase = true
-opt.smartindent = true
-opt.softtabstop = 3
-opt.splitbelow = true
-opt.splitright = true
-opt.statusline = "%#Normal#%="
-opt.swapfile = false
-opt.tabstop = 3
-opt.termguicolors = true
-opt.textwidth = 80
-opt.timeoutlen = 300
-opt.undofile = true
-opt.wildmenu = true
+vim.opt.termguicolors = true
+vim.opt.mouse = ""
+vim.opt.guicursor = ""
+vim.opt.conceallevel = 3
+vim.opt.scrolloff = 10
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.timeoutlen = 300
+vim.opt.pumheight = 10
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrap = false
+vim.opt.number = true
+vim.opt.numberwidth = 2
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 3
+vim.opt.softtabstop = 3
+vim.opt.tabstop = 3
 -- I prefer to use the winbar as my statusline
-opt.winbar = "%#DiffAdd# %#StatusLine# %F %#DiffAdd# %#Red# %m %#String#%(%r %h %w%) %#Normal# %= %#DiffChange# %l/%L "
-opt.wrap = false
-
-vim.api.nvim_command("filetype plugin indent on")
-vim.api.nvim_command("syntax on")
-
--- I get the feeling im going to need this eventually
--- g.markdown_recommend_style = 0
+vim.opt.winbar = "%#IncSearch# %#StatusLine# %F %#IncSearch# %#Red# %m %#String#%(%r %h %w%) %#Normal# %= %#DiffChange# %l/%L "
+vim.opt.statusline = "%#Normal#%="
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
