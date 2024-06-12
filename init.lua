@@ -1,23 +1,21 @@
 require("options")
-require("plugins")
 
-vim.cmd.colorscheme("habamax")
-vim.api.nvim_set_hl(0, "Normal", { bg = "#181818" })
-vim.api.nvim_set_hl(0, "FloatNormal", { link = "Normal" })
-vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
-vim.api.nvim_set_hl(0, "VertSplit", { link = "LineNr" })
-vim.api.nvim_set_hl(0, "StatusLine", { link = "CursorLine" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "none", bg = "DarkGrey" })
-vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "Green" })
-vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "DarkYellow" })
-vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "DarkRed" })
-vim.api.nvim_set_hl(0, "TabLine", { fg = "none", bg = "none" })
-vim.api.nvim_set_hl(0, "TabLineFill", { fg = "DarkGrey", bg = "none" })
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = "White", bg = "none" })
-vim.api.nvim_set_hl(0, "Visual", { link = "CursorLine" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "orange" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "red" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "LightBlue" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "LightGrey" })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineOk", { undercurl = true, sp = "LightGreen" })
-vim.api.nvim_set_hl(0, "ModeMsg", {bg = "none", fg = "LightGreen"})
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+   vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "--single-branch",
+      "https://github.com/folke/lazy.nvim.git",
+      lazypath,
+   })
+end
+vim.opt.runtimepath:prepend(lazypath)
+
+require("lazy").setup("plugins", {
+   concurrency = 4,
+   change_detection = {
+      enabled = false,
+   },
+})

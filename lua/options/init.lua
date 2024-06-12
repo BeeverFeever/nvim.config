@@ -1,5 +1,3 @@
-vim.loader.enable()
-
 -- disable some un-necessary plugins
 vim.g.loaded_gzip = 1
 vim.g.loaded_tar = 1
@@ -17,7 +15,6 @@ vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("options.globals")
 require("options.options")
 require("options.keymaps").general()
 require("options.autocmds")

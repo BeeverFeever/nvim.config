@@ -11,10 +11,11 @@ vim.api.nvim_create_autocmd("FileType", {
    end,
 })
 
--- Set some options in text and markdown files
+-- Set some options in text and markdown files could do this with the ftplugin folder but i like this more
 vim.api.nvim_create_autocmd("FileType", {
    pattern = { "gitcommit", "markdown", "text" },
    callback = function()
+      vim.opt_local.breakindent = true
       vim.opt_local.wrap = true
       vim.opt_local.spell = true
       vim.opt_local.rnu = false
@@ -23,7 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Disable semantic highlighting
-vim.api.nvim_create_autocmd("Colorscheme", {
+vim.api.nvim_create_autocmd("ColorScheme", {
    callback = function()
       for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
          vim.api.nvim_set_hl(0, group, {})
