@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-   pattern = { "c", "glsl" },
+   pattern = { "c", "glsl", "cpp" },
    callback = function() vim.opt.commentstring = "// %s" end
 })
 
