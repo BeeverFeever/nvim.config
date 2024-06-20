@@ -9,24 +9,29 @@ end
 M.general = function()
    set_keymaps({
       -- toggle numbers (with relative line numbers)
-      { "n",          "<leader>n",   '<cmd>set rnu! nu!<CR>',          default_opts },
+      { "n",          "<leader>n",  '<cmd>set rnu! nu!<CR>',         default_opts },
 
       -- use j and k to move through wrapped lines
-      { "n",          "k",           'v:count ? "k" : "gk"',           { silent = true, expr = true } },
-      { "n",          "j",           'v:count ? "j" : "gj"',           { silent = true, expr = true } },
+      { "n",          "k",          'v:count ? "k" : "gk"',          { silent = true, expr = true } },
+      { "n",          "j",          'v:count ? "j" : "gj"',          { silent = true, expr = true } },
 
-      -- does some pasting magic, got it from NvChad
-      { "v",          "p",           'p:let @+=@0<CR>:let @"=@0<CR>',  default_opts },
+      -- Yank into system clipboard
+      { { 'n', 'v' }, '<leader>y',  '"+y',                           default_opts },  -- yank motion
+      { { 'n', 'v' }, '<leader>Y',  '"+Y',                           default_opts },  -- yank line
+
+      -- Paste from system clipboard
+      { { 'n', "v" }, '<leader>p',  '"+p',                           default_opts }, -- paste after cursor
+      { { 'n', "v" }, '<leader>P',  '"+P',                           default_opts }, -- paste before cursor
 
       -- move text around
-      { { "x", "v" }, "<S-j>",       ":m '>+1<CR>gv-gv",               default_opts },
-      { { "x", "v" }, "<S-k>",       ":m '<-2<CR>gv-gv",               default_opts },
+      { { "x", "v" }, "<S-j>",      ":m '>+1<CR>gv-gv",              default_opts },
+      { { "x", "v" }, "<S-k>",      ":m '<-2<CR>gv-gv",              default_opts },
 
       -- stay in visual mode when indenting
-      { "v",          "<",           "<gv",                            default_opts },
-      { "v",          ">",           ">gv",                            default_opts },
+      { "v",          "<",          "<gv",                           default_opts },
+      { "v",          ">",          ">gv",                           default_opts },
 
-      { "n",          "<leader>tw",  "mt<cmd>%s/\\s\\+$//e<CR>`t", default_opts },
+      { "n",          "<leader>tw", "mt<cmd>%s/\\s\\+$//e<CR>`t",    default_opts },
    })
 end
 
@@ -61,7 +66,6 @@ M.lsp = function(bufnr)
                   insertleaders = true,
                   trimTrailingWhiteleader = true,
                },
-               async = true,
             })
          end,
          lsp_opts,

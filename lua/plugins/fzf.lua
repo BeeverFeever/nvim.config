@@ -3,6 +3,7 @@ return {
    keys = {
       { mode = "n", "<leader>ff", "<cmd>FzfLua files<CR>", },
       { mode = "n", "<leader>fg", "<cmd>FzfLua grep_project<CR>", },
+      { mode = "n", "<leader>fb", "<cmd>FzfLua buffers<CR>"},
    },
    dependencies = { "nvim-tree/nvim-web-devicons" },
    opts = {
