@@ -26,33 +26,6 @@ vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
 
 -- custom winbar, I prefer to use the winbar as my statusline
--- set_winbar = function()
---    local modes = {
---       ["n"]  = 'normal',
---       ["no"] = 'normal,op',
---       ["v"]  = 'visual',
---       ["V"]  = 'v-line',
---       ["^V"] = 'v-block',
---       ["s"]  = 'select',
---       ["S"]  = 's-line',
---       ["^S"] = 's-block',
---       ["i"]  = 'insert',
---       ["R"]  = 'replace',
---       ["Rv"] = 'v-replace',
---       ["c"]  = 'command',
---       ["cv"] = 'vim ex',
---       ["ce"] = 'ex',
---       ["r"]  = 'prompt',
---       ["rm"] = 'more',
---       ["r?"] = 'confirm',
---       ["!"]  = 'shell',
---       ["t"]  = 'terminal'
---    }
---
---    local mode = modes[vim.api.nvim_get_mode()['mode']]
---    return "%#IncSearch# %#StatusLine# %F %#IncSearch# %#Red# %m %#String#%(%r %h %w%) %#Normal# %= %#String#" .. mode .. " %#StatusLine# %l/%L "
--- end
--- vim.opt.winbar = "%!v:lua.set_winbar()"
 macro = function()
    local reg = vim.fn.reg_recording()
    if reg == "" then
