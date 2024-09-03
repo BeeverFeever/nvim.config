@@ -14,8 +14,8 @@ return {
          sources = {
             { name = "nvim_lsp", },
             { name = "buffer" },
-            { name = "path" }, },
-
+            { name = "path" },
+         },
          mapping = {
             ["<C-j>"]   = cmp.mapping.select_next_item(),
             ["<C-k>"]   = cmp.mapping.select_prev_item(),

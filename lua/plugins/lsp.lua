@@ -42,6 +42,15 @@ return {
                })
             end,
 
+            ["html"] = function()
+               local capabilities = vim.lsp.protocol.make_client_capabilities()
+               capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+               lspconfig.html.setup({
+                  capabilities = capabilities,
+               })
+            end,
+
             ["lua_ls"] = function()
                lspconfig.lua_ls.setup({
                   capabilities = lsp_capabilities,
