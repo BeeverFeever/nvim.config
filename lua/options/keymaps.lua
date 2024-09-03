@@ -19,6 +19,10 @@ M.general = function()
       { { 'n', 'v' }, '<leader>y',  '"+y',                           default_opts },  -- yank motion
       { { 'n', 'v' }, '<leader>Y',  '"+Y',                           default_opts },  -- yank line
 
+      -- Delete into system clipboard
+      { { 'n', 'v' }, '<leader>d',  '"+d',                           default_opts }, -- delete motion
+      { { 'n', 'v' }, '<leader>D',  '"+D',                           default_opts }, -- delete line
+
       -- Paste from system clipboard
       { { 'n', "v" }, '<leader>p',  '"+p',                           default_opts }, -- paste after cursor
       { { 'n', "v" }, '<leader>P',  '"+P',                           default_opts }, -- paste before cursor
