@@ -1,5 +1,10 @@
 require("options")
 
+-- kanagawa
+-- catpuccin
+-- rose-pine
+colourscheme = "rose-pine"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
    vim.fn.system({

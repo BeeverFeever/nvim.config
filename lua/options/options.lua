@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 
+vim.opt.fillchars = { stl = "─", stlnc = "─" }
 vim.opt.formatoptions = "jcroqlnt" -- "tcqj"
 vim.opt.termguicolors = true
 vim.opt.guicursor = ""
@@ -21,9 +22,9 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 3
 vim.opt.softtabstop = 3
 vim.opt.tabstop = 3
-vim.opt.statusline = "%#Normal#%="
+vim.opt.statusline = "%#VertSplit#%="
 vim.opt.cmdheight = 0
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 
 -- custom winbar, I prefer to use the winbar as my statusline
 macro = function()
