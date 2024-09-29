@@ -17,7 +17,7 @@ local diagnostic_config = {
    }
 }
 
-vim.diagnostic.config(diagnostic_config)
+-- vim.diagnostic.config(diagnostic_config)
 require("options.keymaps").diagnostics()
 
 return {

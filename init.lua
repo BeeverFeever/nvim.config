@@ -3,6 +3,7 @@ require("options")
 -- kanagawa
 -- catpuccin
 -- rose-pine
+-- habamax
 colourscheme = "rose-pine"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

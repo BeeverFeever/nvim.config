@@ -3,7 +3,6 @@ vim.g.mapleader = ' '
 vim.opt.fillchars = { stl = "─", stlnc = "─" }
 vim.opt.formatoptions = "jcroqlnt" -- "tcqj"
 vim.opt.termguicolors = true
-vim.opt.guicursor = ""
 vim.opt.conceallevel = 3
 vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
@@ -14,7 +13,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.number = true
-vim.opt.numberwidth = 2
+vim.opt.numberwidth = 1
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
