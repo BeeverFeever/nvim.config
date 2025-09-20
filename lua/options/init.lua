@@ -18,3 +18,11 @@ vim.g.loaded_netrwPlugin = 1
 require("options.options")
 require("options.keymaps").general()
 require("options.autocmds")
+
+vim.api.nvim_create_user_command("RandHex",
+   function()
+      local number = '#'..string.format("%02x", math.random(0, 16777216))
+      vim.api.nvim_put({number}, "c", true, true)
+   end,
+   {}
+)

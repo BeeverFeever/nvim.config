@@ -5,7 +5,7 @@ M.general = function()
    -- toggle numbers (with relative line numbers)
    vim.keymap.set("n", "<leader>n", '<cmd>set rnu! nu!<CR>', default_opts)
 
-   -- use j and k to move through wrapped lines
+   -- moving around wrapped lines better
    vim.keymap.set("n", "k", 'v:count ? "k" : "gk"', { silent = true, expr = true })
    vim.keymap.set("n", "j", 'v:count ? "j" : "gj"', { silent = true, expr = true })
 
@@ -33,24 +33,25 @@ M.general = function()
    vim.keymap.set("n", "<leader>tw", "mt<cmd>%s/\\s\\+$//e<CR>`t", default_opts)
 
    -- run custom 'build' command
-   vim.keymap.set("n", "<leader>r", "@r")
+   vim.keymap.set("n", "<leader>r", "@r", default_opts)
+
+   vim.keymap.set("n", "<leader>qc", "<cmd>ccl<CR>", default_opts)
 end
 
 M.diagnostics = function()
    local diagnostics_opts = { silent = true, noremap = true }
+   vim.keymap.set("n", "<space>dq", vim.diagnostic.setloclist, diagnostics_opts)
    vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, diagnostics_opts)
    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, diagnostics_opts)
    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, diagnostics_opts)
-   vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, diagnostics_opts)
 end
 
 M.lsp = function(bufnr)
    local lsp_opts = { silent = true, noremap = true, buffer = bufnr }
-   vim.keymap.set({ "n", "i", }, "<ctrl>h", vim.lsp.buf.signature_help, lsp_opts)
    vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, lsp_opts)
    vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, lsp_opts)
    vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, lsp_opts)
-   vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, lsp_opts)
+   -- vim.keymap.set("n", "<leader>lk", vim.lsp.buf.hover, lsp_opts)
    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, lsp_opts)
    vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, lsp_opts)
    vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, lsp_opts)

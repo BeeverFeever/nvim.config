@@ -1,27 +1,30 @@
 require("options")
 
--- kanagawa
--- catpuccin
--- rose-pine
--- habamax
-colourscheme = "rose-pine"
+vim.pack.add({
+   { src = "https://github.com/rebelot/kanagawa.nvim" },
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-   vim.fn.system({
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "--single-branch",
-      "https://github.com/folke/lazy.nvim.git",
-      lazypath,
-   })
-end
-vim.opt.runtimepath:prepend(lazypath)
-
-require("lazy").setup("plugins", {
-   concurrency = 4,
-   change_detection = {
-      enabled = false,
-   },
+   { src = "https://github.com/windwp/nvim-ts-autotag" },
+   { src = "https://github.com/Saghen/blink.cmp",                 version = vim.version.range("1.*") },
+   { src = "https://github.com/ibhagwan/fzf-lua" },
+   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+   { src = "https://github.com/neovim/nvim-lspconfig" },
+   { src = "https://github.com/williamboman/mason.nvim" },
+   { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
+   { src = "https://github.com/echasnovski/mini.pairs" },
+   { src = "https://github.com/stevearc/oil.nvim" },
+   { src = "https://github.com/hedyhli/outline.nvim" },
+   { src = "https://github.com/nvim-treesitter/nvim-treesitter",  version = "main" },
 })
+
+local default_opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>O", "<cmd>Outline<CR>", default_opts)
+
+require("plugins/kanagawa")
+require("plugins/oil")
+require("plugins/fzf")
+require("plugins/blink")
+require("plugins/lsp")
+
+require("mini.pairs").setup()
+require("nvim-ts-autotag").setup()
+require("outline").setup()

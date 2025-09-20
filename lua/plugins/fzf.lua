@@ -1,19 +1,20 @@
-return {
-   "ibhagwan/fzf-lua",
-   keys = {
-      { mode = "n", "<leader>ff", "<cmd>FzfLua files<CR>", },
-      { mode = "n", "<leader>fg", "<cmd>FzfLua grep_project<CR>", },
-      { mode = "n", "<leader>fb", "<cmd>FzfLua buffers<CR>"},
-   },
-   dependencies = { "nvim-tree/nvim-web-devicons" },
-   opts = {
-      winopts = {
-         split = "belowright new",
-         border = "single",
-         preview = {
-            horizontal = 'right:45%',
-            layout = 'horizontal',
-         },
+vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>")
+vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua grep_project<CR>")
+
+require("fzf-lua").setup({
+   -- to send all results to qf list
+   keymap = {
+      fzf = {
+         true,
+         ["ctrl-q"] = "select-all+accept",
       },
    },
-}
+   winopts = {
+      split = "belowright new",
+      border = "single",
+      preview = {
+         horizontal = 'right:45%',
+         layout = 'horizontal',
+      },
+   },
+})

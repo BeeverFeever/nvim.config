@@ -1,10 +1,12 @@
 vim.g.mapleader = ' '
 
+vim.opt.winborder = "single"
 vim.opt.fillchars = { stl = "─", stlnc = "─" }
 vim.opt.formatoptions = "jcroqlnt" -- "tcqj"
 vim.opt.termguicolors = true
 vim.opt.conceallevel = 3
 vim.opt.scrolloff = 10
+vim.opt.sidescroll = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.timeoutlen = 300
@@ -12,6 +14,7 @@ vim.opt.pumheight = 10
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
+vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.numberwidth = 1
 vim.opt.relativenumber = true
@@ -24,6 +27,7 @@ vim.opt.tabstop = 3
 vim.opt.statusline = "%#VertSplit#%="
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
+vim.opt.makeprg = "./build"
 
 -- custom winbar, I prefer to use the winbar as my statusline
 macro = function()
