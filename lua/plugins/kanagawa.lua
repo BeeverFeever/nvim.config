@@ -13,11 +13,15 @@ require("kanagawa").setup({
          -- Pmenu = { link = "NormalDark" },
          Pmenu = { fg = current_theme.ui.bg_m3, bg = "NONE" },
          PmenuSel = { fg = current_theme.ui.shade0, bg = current_theme.ui.bg_p1 },
-         PmenuKind = { link = "NormalDark" },
+         -- PmenuKind = { link = "NormalDark" },
          -- PmenuSel = { fg = "NONE", bg = current_theme.ui.bg_p2 },
          -- PmenuSbar = { bg = current_theme.ui.bg_m1 },
          -- PmenuThumb = { bg = current_theme.ui.bg_p2 },
          BlinkCmpMenuBorder = { fg = current_theme.ui.bg_m3, bg = "NONE" },
+         WinSeparator = { fg = current_theme.ui.bg_m3, bg = "NONE" },
+         StatusLine = { fg = "NONE", bg = "NONE" },
+         MsgArea = { fg = colors.palette.dragonBlue },
+         MatchParen = { fg = colors.palette.springGreen },
       }
    end,
 })

@@ -38,7 +38,10 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
    pattern = { "c", "glsl", "cpp" },
-   callback = function() vim.opt.commentstring = "// %s" end
+   callback = function()
+      vim.opt.commentstring = "// %s"
+      vim.opt.makeprg = "./build"
+   end
 })
 
 -- Disable semantic highlighting
