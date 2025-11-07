@@ -1,6 +1,8 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+vim.lsp.log.set_level("off")
+
 vim.diagnostic.config({
    signs = true,
    update_in_insert = true,

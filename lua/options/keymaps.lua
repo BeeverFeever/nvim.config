@@ -35,6 +35,7 @@ M.general = function()
    -- run custom 'build' command
    vim.keymap.set("n", "<leader>r", "@r", default_opts)
 
+   -- close quickfix
    vim.keymap.set("n", "<leader>qc", "<cmd>ccl<CR>", default_opts)
 end
 
